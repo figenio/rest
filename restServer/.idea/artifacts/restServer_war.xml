@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="restServer:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>restServer</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="restServer-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="restServer:war exploded" />
+    </root>
+  </artifact>
+</component>
