@@ -8,11 +8,15 @@ import { Appointment } from '../models/appointment';
 })
 export class ServerService {
 
-  url = "http://localhost:4200/api/appointment"
+  url = "http://localhost:8080/restServer-1.0-SNAPSHOT"
 
   constructor(private httpClient: HttpClient) { }
 
   registerAppointment(ap: Appointment): Observable<[]> {
     return this.httpClient.post<[]>(this.url, ap);
+  }
+
+  testHelloWorld(): Observable<string> {
+    return this.httpClient.get(this.url+ '/hello-world', { responseType: 'text' });
   }
 }

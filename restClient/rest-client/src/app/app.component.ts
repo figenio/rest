@@ -29,6 +29,14 @@ export class AppComponent {
     })
   }
 
+  testServer() {
+    console.log("Testando servidor")
+
+    this.serverService.testHelloWorld().subscribe((result) => {
+      console.log(result);
+    })
+  }
+
 
   get validName() {
     return this.name.length > 0;
