@@ -12,11 +12,11 @@ export class ServerService {
 
   constructor(private httpClient: HttpClient) { }
 
-  registerAppointment(ap: Appointment): Observable<[]> {
-    return this.httpClient.post<[]>(this.url, ap);
-  }
-
   testHelloWorld(): Observable<string> {
     return this.httpClient.get(this.url+ '/hello-world', { responseType: 'text' });
+  }
+
+  registerAppointment(ap: Appointment): Observable<[]> {
+    return this.httpClient.post<[]>(this.url, ap);
   }
 }

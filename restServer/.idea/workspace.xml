@@ -10,7 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711e3a32-2272-4d7d-a5fc-4c8b64add3b1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../restClient/rest-client/src/app/services/server.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../restClient/rest-client/src/app/services/server.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +154,7 @@
       <workItem from="1668555303627" duration="1932000" />
       <workItem from="1668557280879" duration="390000" />
       <workItem from="1668621491807" duration="10148000" />
-      <workItem from="1670354604788" duration="2531000" />
+      <workItem from="1670354604788" duration="3205000" />
     </task>
     <servers />
   </component>
