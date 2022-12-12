@@ -40,8 +40,8 @@ export class ServerService {
   }
 
   // Pega compromissos
-  getAppointments(clientName: String) {
-    return this.httpClient.get(this.url + '/client/' + clientName, {headers : this.headers});
+  getAppointments(appTime: number) {
+    return this.httpClient.get(this.url + '/client/' + appTime, {headers : this.headers});
   }
 
   // Se coloca em um compromisso

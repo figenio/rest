@@ -25,11 +25,11 @@
     <h3 class="sub-title">Criar compromisso</h3>
     <div class="function">
       <mat-form-field appearance="fill" class="user-input">
-        <input matInput type="text" placeholder="Nome do Compromisso" [(ngModel)]="createCompName">
+        <input matInput type="text" placeholder="Nome do Compromisso" [(ngModel)]="createAppName">
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="user-input">
-        <input matInput type="time" placeholder="Hora do Compromisso" [(ngModel)]="createCompTime">
+        <input matInput type="time" placeholder="Hora do Compromisso" [(ngModel)]="createAppTime">
       </mat-form-field>
 
       <button mat-raised-button (click)="setAppointment()">Marcar</button>
@@ -52,7 +52,7 @@
     <h3 class="sub-title">Cancelar compromisso</h3>
     <div class="function">
       <mat-form-field appearance="fill" class="user-input">
-        <input matInput type="text" placeholder="Nome do Compromisso" [(ngModel)]="cancelCompName">
+        <input matInput type="text" placeholder="Nome do Compromisso" [(ngModel)]="cancelAppName">
       </mat-form-field>
 
       <button mat-raised-button (click)="testServer()">Cancelar</button>
@@ -61,7 +61,7 @@
     <h3 class="sub-title">Consultar compromissos</h3>
     <div class="function">
       <mat-form-field appearance="fill" class="user-input">
-        <input matInput type="time" placeholder="Hora do Compromisso" [(ngModel)]="consultCompTime">
+        <input matInput type="time" placeholder="Hora do Compromisso" [(ngModel)]="consultAppTime">
       </mat-form-field>
 
       <button mat-raised-button (click)="giveList()">Consultar</button>
@@ -77,7 +77,7 @@
     <h3 class="sub-title">Participar de compromisso</h3>
     <div class="function">
       <mat-form-field appearance="fill" class="user-input">
-        <input matInput type="text" placeholder="Nome do Compromisso"[(ngModel)]="joinCompName">
+        <input matInput type="text" placeholder="Nome do Compromisso"[(ngModel)]="joinAppName">
       </mat-form-field>
 
       <button mat-raised-button (click)="testServer()">Participar</button>
