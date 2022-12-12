@@ -8,23 +8,23 @@ public class Appointment {
 //    String name; // Name of appointment (identifier on Map)
     String name;
     Timestamp dateTime; // Date and time of appointment
-    Map<String, Integer> guests; // List of guests and their preferred alert time
+//    Map<String, Integer> guests; // List of guests and their preferred alert time
 
     public Appointment(Timestamp dateTime) {
 //        this.name = name;
         this.dateTime = dateTime;
-        this.guests = new HashMap<>();
+//        this.guests = new HashMap<>();
     }
 
     // Adds a guest to the appointment and its alert
-    void addGuest(String clientName, int time) {
-        guests.put(clientName, time);
-    }
+//    void addGuest(String clientName, int time) {
+//        guests.put(clientName, time);
+//    }
 
     // Removes guest from the appointment
-    void removeGuest(String clientName) {
-        guests.remove(clientName);
-    }
+//    void removeGuest(String clientName) {
+//        guests.remove(clientName);
+//    }
 
 }
 

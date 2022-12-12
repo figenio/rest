@@ -8,3 +8,22 @@
     color: #636363;
     padding-bottom: 1rem;
 }
+
+.sub-title {
+    color: #636363;
+}
+
+.function {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.user-input {
+    border-bottom: solid 2px brown;
+}
+
+.listing {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+}

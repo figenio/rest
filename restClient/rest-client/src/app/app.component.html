@@ -1,25 +1,88 @@
-
 <mat-card class="content">
-  <h1 class="title">Agenda de Compromissos </h1>
+  <div>
+    <h1 class="title">Agenda de Compromissos </h1>
+    <button style="position: absolute; margin: 1rem 1rem 0 0; right: 0; top: 0;" mat-raised-button
+      (click)="testServer()">Test</button>
+  </div>
+
+
 
   <div *ngIf="!loggedIn">
     <mat-form-field appearance="fill">
       <input matInput type="text" placeholder="Inserir Nome do Cliente" [(ngModel)]="name">
     </mat-form-field>
 
-    <button style="margin-left: 2rem;" mat-raised-button [disabled]="!validName" (click)="loggedIn = true">Confirmar nome</button>
+    <button style="margin-left: 2rem;" mat-raised-button [disabled]="!validName" (click)="login()">Confirmar
+      nome</button>
   </div>
 
-  <div *ngIf="loggedIn">
-    <p>Nome: {{name}}</p>
 
-    <!-- Ações -->
-    <div style="display: flex; gap: 1rem">
-      <button mat-raised-button (click)="testServer()">Marcar Compromisso</button>
-      <button mat-raised-button (click)="testServer()">Marcar Presença</button>
+
+
+  <div *ngIf="loggedIn">
+    <p>Cliente: {{name}}</p>
+
+    <h3 class="sub-title">Criar compromisso</h3>
+    <div class="function">
+      <mat-form-field appearance="fill" class="user-input">
+        <input matInput type="text" placeholder="Nome do Compromisso" [(ngModel)]="createCompName">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="user-input">
+        <input matInput type="time" placeholder="Hora do Compromisso" [(ngModel)]="createCompTime">
+      </mat-form-field>
+
+      <button mat-raised-button (click)="setAppointment()">Marcar</button>
     </div>
-  
-    <!-- Listagem de compromissos confirmados -->
+
+    <div class="function">
+      <mat-form-field appearance="fill" class="user-input">
+        <input matInput type="text" placeholder="Convidado" [(ngModel)]="guest">
+      </mat-form-field>
+      <button mat-raised-button (click)="addGuest()">Adicionar</button>
+    </div>
+
+    <div *ngIf="guests.length > 0" class="listing">
+      <p class="sub-title" style="font-weight: 500">Convidados</p>
+      <ul *ngFor="let g of guests">
+        <li>{{g}}</li>
+      </ul>
+    </div>
+
+    <h3 class="sub-title">Cancelar compromisso</h3>
+    <div class="function">
+      <mat-form-field appearance="fill" class="user-input">
+        <input matInput type="text" placeholder="Nome do Compromisso" [(ngModel)]="cancelCompName">
+      </mat-form-field>
+
+      <button mat-raised-button (click)="testServer()">Cancelar</button>
+    </div>
+
+    <h3 class="sub-title">Consultar compromissos</h3>
+    <div class="function">
+      <mat-form-field appearance="fill" class="user-input">
+        <input matInput type="time" placeholder="Hora do Compromisso" [(ngModel)]="consultCompTime">
+      </mat-form-field>
+
+      <button mat-raised-button (click)="giveList()">Consultar</button>
+    </div>
+
+    <div *ngIf="appListed.length > 0" class="listing">
+      <p class="sub-title" style="font-weight: 500">Compromissos</p>
+      <ul *ngFor="let app of appListed">
+        <li>{{app}}</li>
+      </ul>
+    </div>
+
+    <h3 class="sub-title">Participar de compromisso</h3>
+    <div class="function">
+      <mat-form-field appearance="fill" class="user-input">
+        <input matInput type="text" placeholder="Nome do Compromisso"[(ngModel)]="joinCompName">
+      </mat-form-field>
+
+      <button mat-raised-button (click)="testServer()">Participar</button>
+    </div>
+
   </div>
 
 </mat-card>
