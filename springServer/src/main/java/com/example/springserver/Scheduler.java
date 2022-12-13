@@ -29,6 +29,7 @@ public class Scheduler {
         System.out.println("Registering new appointment!");
         appointments.put(apName, new Appointment()); // Register appointment
         appointments.get(apName).setDateTime(apTime);
+        appointments.get(apName).setName(apName);
 
         // Register the client that created the appointment in it
         appointments.get(apName).guests.add(clientName);
@@ -55,21 +56,21 @@ public class Scheduler {
     }
 
     // Query for appointments of client by hour inputted
-    public List<String> queryAppointments(String clientName, Timestamp timeToSearch) {
+    public List<Appointment> queryAppointments(String clientName, Timestamp timeToSearch) {
         System.out.println("Querying for appointments of " + clientName);
 
-        List<String> appointmentNames = new ArrayList<>();
+        List<Appointment> appointmentsOfClient = new ArrayList<>();
         for (Map.Entry<String, Appointment> entry : appointments.entrySet()) {
             if (entry.getValue().dateTime.getDate() == timeToSearch.getDate()
                     && entry.getValue().dateTime.getMonth() == timeToSearch.getMonth()
                     && entry.getValue().dateTime.getYear() == timeToSearch.getYear()
                     && entry.getValue().guests.contains(clientName)) {
-                appointmentNames.add(entry.getKey());
+                appointmentsOfClient.add(entry.getValue());
             }
         }
 
         System.out.println("Returning appointments found");
-        return appointmentNames;
+        return appointmentsOfClient;
     }
 
     // Client participates in appointment

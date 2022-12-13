@@ -65,7 +65,7 @@
     <h3 class="sub-title">Consultar compromissos</h3>
     <div class="function">
       <mat-form-field appearance="fill" class="user-input">
-        <input matInput type="date" placeholder="Hora do Compromisso" [(ngModel)]="appDate">
+        <input matInput type="date" placeholder="Hora do Compromisso" [(ngModel)]="queryAppDate">
       </mat-form-field>
 
       <button mat-raised-button (click)="queryAppointment()">Consultar</button>
@@ -74,7 +74,9 @@
     <div *ngIf="appListed.length > 0" class="listing">
       <p class="sub-title" style="font-weight: 500">Compromissos</p>
       <ul *ngFor="let app of appListed">
-        <li>{{app}}</li>
+        <li>{{app.name}}, {{app.dateTime  | date:"dd/MM/yyyy h:mm":'GMT'}}
+          <span *ngFor="let g of app.guests">, {{g}}</span>
+        </li>
       </ul>
     </div>
 

@@ -23,7 +23,7 @@ export class AppComponent {
   cancelAppName = '';
 
   // Variáveis de buscar
-  appDate = "new Date()";
+  queryAppDate = "";
   appListed: any = [];
 
   // Variável de participar
@@ -65,14 +65,12 @@ export class AppComponent {
    * Método que cadastra um compromisso e limpa os formulários se bem sucedido
    */
   setAppointment() {
-    debugger;
     // Cálculo de timestamp
     let startTime = this.createAppTime.split(":");
     let startHours = Number(startTime[0]) * 60 * 60 * 1000;
     let startMinutes = Number(startTime[1]) * 60 * 1000;
-    let appDate = new Date(this.createAppDate).getTime();
+    let appDate = new Date(this.createAppDate).getTime() + startHours + startMinutes;
 
-    debugger;
     // Montando objeto
     let app: Appointment = {
       name: this.createAppName,
@@ -108,11 +106,9 @@ export class AppComponent {
    * Método que busca compromissos por hora
    */
   queryAppointment() {
-    // Cálculo de timestamp
-
-    this.serverService.getAppointments(this.name, new Date(this.appDate).getTime()).subscribe((result) => {
+    this.serverService.getAppointments(this.name, new Date(this.queryAppDate).getTime()).subscribe((result) => {
       console.log(result);
-      this.appDate = ""
+      this.queryAppDate = ""
 
       this.appListed = result;
     }, error => {

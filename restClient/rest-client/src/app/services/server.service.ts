@@ -20,9 +20,6 @@ export class ServerService {
 
   // Cadastro do cliente
   registerClient(name: String): Observable<any> {;
-
-    //const params = new HttpParams().set('clientName', name.valueOf());
-
     return this.httpClient.post(this.url + '/client?clientName=' + name, null);
   }
 
