@@ -7,11 +7,36 @@ import java.util.List;
 import java.util.Map;
 
 public class Appointment {
+    String name;
     Timestamp dateTime; // Date and time of appointment
-    Map<String, Integer> guests; // List of guests and their preferred alert time
+    List<String> guests; // List of guests and their preferred alert time
 
-    public Appointment(Timestamp dateTime) {
+    public void setGuests(List<String> guests) {
+        this.guests = guests;
+    }
+
+    public Appointment() {
+        this.guests = new ArrayList<>();
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Timestamp getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Timestamp dateTime) {
         this.dateTime = dateTime;
-        this.guests = new HashMap<>();
+    }
+
+    public List<String> getGuests() {
+        return guests;
     }
 }

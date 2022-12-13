@@ -14,6 +14,7 @@ export class AppComponent {
 
   // Variáveis de criação
   createAppName = '';
+  createAppDate = "";
   createAppTime = "00:00";
   guest = "";
   guests: any[] = [];
@@ -22,8 +23,8 @@ export class AppComponent {
   cancelAppName = '';
 
   // Variáveis de buscar
-  consultAppTime = "00:00"
-  appListed: any[] = [];
+  appDate = "new Date()";
+  appListed: any = [];
 
   // Variável de participar
   joinAppName = ""
@@ -64,12 +65,14 @@ export class AppComponent {
    * Método que cadastra um compromisso e limpa os formulários se bem sucedido
    */
   setAppointment() {
+    debugger;
     // Cálculo de timestamp
     let startTime = this.createAppTime.split(":");
     let startHours = Number(startTime[0]) * 60 * 60 * 1000;
     let startMinutes = Number(startTime[1]) * 60 * 1000;
-    let appDate = new Date().setHours(0,0,0,0) + startHours + startMinutes;
+    let appDate = new Date(this.createAppDate).getTime();
 
+    debugger;
     // Montando objeto
     let app: Appointment = {
       name: this.createAppName,
@@ -78,9 +81,10 @@ export class AppComponent {
     };
 
     // Chamada da API
-    this.serverService.registerAppointment(app).subscribe((result) => {
+    this.serverService.registerAppointment(app, this.name).subscribe((result) => {
       console.log(result);
       this.createAppName = "";
+      this.createAppDate = "";
       this.createAppTime = "00:00";
       this.guests = []
     }, error => {
@@ -92,7 +96,7 @@ export class AppComponent {
    * Método que cancela um compromisso pelo nome
    */
   cancelAppointment() {
-    this.serverService.cancelAppointment(this.cancelAppName).subscribe((result) => {
+    this.serverService.cancelAppointment(this.name, this.cancelAppName).subscribe((result) => {
       console.log(result);
       this.cancelAppName = "";
     }, error => {
@@ -103,17 +107,14 @@ export class AppComponent {
   /**
    * Método que busca compromissos por hora
    */
-  getAppointment() {
+  queryAppointment() {
     // Cálculo de timestamp
-    let startTime = this.consultAppTime.split(":");
-    let startHours = Number(startTime[0]) * 60 * 60 * 1000;
-    let appTime = new Date().setHours(0,0,0,0) + startHours;
 
-    this.serverService.getAppointments(appTime).subscribe((result) => {
+    this.serverService.getAppointments(this.name, new Date(this.appDate).getTime()).subscribe((result) => {
       console.log(result);
-      this.consultAppTime = "00:00";
+      this.appDate = ""
 
-      // this.appListed = result;
+      this.appListed = result;
     }, error => {
       console.error(error);
     });

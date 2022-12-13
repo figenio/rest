@@ -7,16 +7,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@RestController
 public class SpringServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringServerApplication.class, args);
-    }
-
-    @GetMapping("/hello")
-    public String sayHello(@RequestParam(value = "myName", defaultValue = "World") String name) {
-        System.out.println("Giving hello");
-        return String.format("Hello %s!", name);
     }
 }
