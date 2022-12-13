@@ -31,11 +31,13 @@ export class AppComponent {
   constructor(private serverService: ServerService) { }
 
 
+  /**
+   * Método que adiciona convidados ao compromisso
+   */
   addGuest() {
     this.guests.push(this.guest);
     this.guest = "";
   }
-
 
   /**
    * Método simples para testar se o servidor está online
@@ -110,6 +112,8 @@ export class AppComponent {
     this.serverService.getAppointments(appTime).subscribe((result) => {
       console.log(result);
       this.consultAppTime = "00:00";
+
+      // this.appListed = result;
     }, error => {
       console.error(error);
     });
@@ -126,6 +130,8 @@ export class AppComponent {
       console.error(error);
     });
   }
+
+
 
 
   // Método temporário
