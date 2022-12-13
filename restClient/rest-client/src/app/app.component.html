@@ -74,7 +74,7 @@
     <div *ngIf="appListed.length > 0" class="listing">
       <p class="sub-title" style="font-weight: 500">Compromissos</p>
       <ul *ngFor="let app of appListed">
-        <li>{{app.name}}, {{app.dateTime  | date:"dd/MM/yyyy h:mm":'GMT'}}
+        <li>{{app.name}}, {{app.dateTime  | date:"dd/MM/yyyy HH:mm":'GMT'}}
           <span *ngFor="let g of app.guests">, {{g}}</span>
         </li>
       </ul>

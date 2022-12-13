@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Appointment {
     String name;
-    Timestamp dateTime; // Date and time of appointment
+    long dateTime; // Date and time of appointment
     List<String> guests; // List of guests and their preferred alert time
 
     public void setGuests(List<String> guests) {
@@ -28,11 +28,11 @@ public class Appointment {
         this.name = name;
     }
 
-    public Timestamp getDateTime() {
+    public long getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Timestamp dateTime) {
+    public void setDateTime(long dateTime) {
         this.dateTime = dateTime;
     }
 

@@ -2,11 +2,8 @@ package com.example.springserver;
 
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class Scheduler {
@@ -25,8 +22,8 @@ public class Scheduler {
     }
 
     // Register a new appointment and sets its guests
-    public void registerAppointment(String clientName, String apName, Timestamp apTime, List<String> guests) {
-        System.out.println("Registering new appointment!");
+    public void registerAppointment(String clientName, String apName, long apTime, List<String> guests) {
+        System.out.println("Registering new appointment " + apName + " at " + apTime);
         appointments.put(apName, new Appointment()); // Register appointment
         appointments.get(apName).setDateTime(apTime);
         appointments.get(apName).setName(apName);
@@ -40,6 +37,8 @@ public class Scheduler {
             appointments.get(apName).guests.add(guests.get(i));
             clients.get(guests.get(i)).addAppointment(apName);
         }
+
+        System.out.println("Appointment guests: " + appointments.get(apName).guests.toString());
     }
 
     // Cancels appointment for client
@@ -56,20 +55,18 @@ public class Scheduler {
     }
 
     // Query for appointments of client by hour inputted
-    public List<Appointment> queryAppointments(String clientName, Timestamp timeToSearch) {
-        System.out.println("Querying for appointments of " + clientName);
+    public List<Appointment> queryAppointments(String clientName, long longToSearch) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+
+        System.out.println("Querying for appointments of " + clientName + " at " + dateFormat.format(new Date(longToSearch)));
 
         List<Appointment> appointmentsOfClient = new ArrayList<>();
         for (Map.Entry<String, Appointment> entry : appointments.entrySet()) {
-            if (entry.getValue().dateTime.getDate() == timeToSearch.getDate()
-                    && entry.getValue().dateTime.getMonth() == timeToSearch.getMonth()
-                    && entry.getValue().dateTime.getYear() == timeToSearch.getYear()
-                    && entry.getValue().guests.contains(clientName)) {
+            if (dateFormat.format(new Date(longToSearch)).equals(dateFormat.format(new Date(entry.getValue().dateTime)))) {
                 appointmentsOfClient.add(entry.getValue());
             }
         }
-
-        System.out.println("Returning appointments found");
         return appointmentsOfClient;
     }
 

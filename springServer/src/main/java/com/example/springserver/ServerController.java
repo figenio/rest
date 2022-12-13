@@ -44,17 +44,14 @@ public class ServerController {
 
     @CrossOrigin
     @GetMapping("/appointment")
-    public List<Appointment> registerAppointment(@RequestParam(value = "clientName") String clientName, @RequestParam(value = "dateTime") long dateNumber) {
+    public List<Appointment> queryAppointment(@RequestParam(value = "clientName") String clientName, @RequestParam(value = "dateTime") long dateTime) {
         System.out.println("SPRING: consulting appointment for " + clientName);
-        Timestamp dateTime = new Timestamp(dateNumber);
-        System.out.println("Inputted" + dateNumber);
-        System.out.println("timestamp" + dateTime.getTime());
         return scheduler.queryAppointments(clientName, dateTime);
     }
 
     @CrossOrigin
     @PutMapping("/appointment")
-    public void registerAppointment(@RequestParam(value = "clientName") String clientName, @RequestParam(value = "appName") String appName) {
+    public void joinAppointment(@RequestParam(value = "clientName") String clientName, @RequestParam(value = "appName") String appName) {
         System.out.println("SPRING: joining appointment - " + appName);
         scheduler.participateInAppointment(clientName, appName);
     }
