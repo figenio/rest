@@ -63,7 +63,8 @@ public class Scheduler {
 
         List<Appointment> appointmentsOfClient = new ArrayList<>();
         for (Map.Entry<String, Appointment> entry : appointments.entrySet()) {
-            if (dateFormat.format(new Date(longToSearch)).equals(dateFormat.format(new Date(entry.getValue().dateTime)))) {
+            if (dateFormat.format(new Date(longToSearch)).equals(dateFormat.format(new Date(entry.getValue().dateTime)))
+                && entry.getValue().guests.contains(clientName)) {
                 appointmentsOfClient.add(entry.getValue());
             }
         }

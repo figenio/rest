@@ -36,7 +36,7 @@ public class ServerController {
 
     @CrossOrigin
     @DeleteMapping("/appointment")
-    public void cancellingAppointment(@RequestParam(value = "clientName") String clientName, @RequestParam(value = "appName") String appName) {
+    public void cancelAppointment(@RequestParam(value = "clientName") String clientName, @RequestParam(value = "appName") String appName) {
         System.out.println("SPRING: canceling appointment - " + appName);
         scheduler.cancelAppointment(clientName, appName);
         System.out.println(scheduler.appointments.keySet());
